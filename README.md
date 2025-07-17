@@ -176,6 +176,10 @@ If you encounter any issues or have suggestions for improvements:
 
 This project is open source and available under the [MIT License](LICENSE).
 
+## 🎨 Icons
+
+Work icons created by [Freepik - Flaticon](https://www.flaticon.com/free-icons/work)
+
 ---
 
 **Made with ❤️ for job seekers everywhere**
