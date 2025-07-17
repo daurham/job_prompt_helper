@@ -1,20 +1,7 @@
-/* Job Prompt Helper - Modern Compact Design */
+/* Job Prompt Helper - Scoped Styles Only */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: Canvas;
-  color: CanvasText;
-  line-height: 1.4;
-  min-width: 380px; /* Ensure minimum width for popup */
-}
-
-.container {
+/* Extension-specific container styles */
+.jph-container {
   width: 100%;
   min-width: 380px;
   max-width: 380px;
@@ -23,10 +10,14 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   border: 1px solid ButtonBorder;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: Canvas;
+  color: CanvasText;
+  line-height: 1.4;
 }
 
-/* Header */
-.header {
+/* Extension-specific header */
+.jph-header {
   background: Highlight;
   color: HighlightText;
   padding: 12px 16px;
@@ -38,7 +29,7 @@ body {
   gap: 12px;
 }
 
-.header h3 {
+.jph-header h3 {
   font-size: 16px;
   font-weight: 600;
   margin: 0;
@@ -46,34 +37,13 @@ body {
   min-width: 0;
 }
 
-.header-buttons {
+.jph-header-buttons {
   display: flex;
   gap: 8px;
   align-items: center;
 }
 
-.close-btn {
-  background: none;
-  border: none;
-  color: HighlightText;
-  font-size: 18px;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-  transition: background-color 0.2s;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.close-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.settings-btn {
+.jph-settings-btn {
   background: none;
   border: none;
   color: HighlightText;
@@ -91,17 +61,17 @@ body {
   opacity: 0.9;
 }
 
-.settings-btn:hover {
+.jph-settings-btn:hover {
   background: rgba(255, 255, 255, 0.2);
   opacity: 1;
   transform: scale(1.1);
 }
 
-.settings-btn:active {
+.jph-settings-btn:active {
   transform: scale(0.95);
 }
 
-.support-btn {
+.jph-support-btn {
   background: none;
   border: none;
   color: HighlightText;
@@ -119,24 +89,24 @@ body {
   opacity: 0.8;
 }
 
-.support-btn:hover {
+.jph-support-btn:hover {
   background: rgba(255, 255, 255, 0.2);
   opacity: 1;
   transform: scale(1.1);
 }
 
-.support-btn:active {
+.jph-support-btn:active {
   transform: scale(0.95);
 }
 
-/* Search Input */
-.search-container {
+/* Extension-specific search input */
+.jph-search-container {
   padding: 12px 16px;
   border-bottom: 1px solid ButtonBorder;
   position: relative;
 }
 
-#search {
+.jph-search-input {
   width: 100%;
   padding: 8px 12px;
   border: 1px solid ButtonBorder;
@@ -146,60 +116,62 @@ body {
   background: Field;
   color: FieldText;
   box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
-#search:focus {
+.jph-search-input:focus {
   outline: none;
   border-color: Highlight;
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
 }
 
-#search::placeholder {
+.jph-search-input::placeholder {
   color: GrayText;
 }
 
-/* Results Container */
-#results {
+/* Extension-specific results container */
+.jph-results {
   max-height: 350px;
   overflow-y: auto;
   padding: 0;
 }
 
-#results::-webkit-scrollbar {
+.jph-results::-webkit-scrollbar {
   width: 4px;
 }
 
-#results::-webkit-scrollbar-track {
+.jph-results::-webkit-scrollbar-track {
   background: ButtonFace;
 }
 
-#results::-webkit-scrollbar-thumb {
+.jph-results::-webkit-scrollbar-thumb {
   background: ButtonBorder;
   border-radius: 2px;
 }
 
-#results::-webkit-scrollbar-thumb:hover {
+.jph-results::-webkit-scrollbar-thumb:hover {
   background: GrayText;
 }
 
-/* Prompt Items - Compact Design */
-.prompt {
+/* Extension-specific prompt items */
+.jph-prompt {
   padding: 8px 16px;
   border-bottom: 1px solid ButtonBorder;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
   cursor: pointer;
   position: relative;
 }
 
-.prompt:hover {
+.jph-prompt:hover {
   background: ButtonFace;
+  transform: translateX(2px);
 }
 
-.prompt:last-child {
+.jph-prompt:last-child {
   border-bottom: none;
 }
 
-.prompt-title {
+.jph-prompt-title {
   font-weight: 600;
   color: CanvasText;
   margin-bottom: 4px;
@@ -207,7 +179,7 @@ body {
   text-transform: capitalize;
 }
 
-.prompt-text {
+.jph-prompt-text {
   color: GrayText;
   font-size: 12px;
   line-height: 1.4;
@@ -219,9 +191,15 @@ body {
   border-left: 2px solid Highlight;
   position: relative;
   padding-right: 32px;
+  transition: all 0.2s;
 }
 
-.copy-button {
+.jph-prompt:hover .jph-prompt-text {
+  border-left-color: Highlight;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.jph-copy-button {
   position: absolute;
   right: 8px;
   top: 50%;
@@ -242,119 +220,42 @@ body {
   opacity: 0.7;
 }
 
-.copy-button:hover {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.1);
-}
-
-.copy-button:active {
-  transform: translateY(-50%) scale(0.95);
-}
-
-/* Empty State */
-.empty-state {
-  padding: 32px 16px;
-  text-align: center;
-  color: GrayText;
-}
-
-.empty-state-icon {
-  font-size: 32px;
-  margin-bottom: 12px;
-  opacity: 0.5;
-}
-
-.empty-state-text {
-  font-size: 13px;
-  line-height: 1.4;
-}
-
-.empty-state-subtext {
-  font-size: 11px;
-  opacity: 0.7;
-  margin-top: 4px;
-}
-
-/* Enhanced Copy Button */
-.copy-button {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: Highlight;
-  color: HighlightText;
-  border: none;
-  padding: 4px;
-  border-radius: 4px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.7;
-}
-
-.copy-button:hover {
+.jph-copy-button:hover {
   opacity: 1;
   transform: translateY(-50%) scale(1.1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.copy-button:active {
+.jph-copy-button:active {
   transform: translateY(-50%) scale(0.95);
 }
 
-/* Enhanced Prompt Items */
-.prompt {
-  padding: 8px 16px;
-  border-bottom: 1px solid ButtonBorder;
-  transition: all 0.2s;
-  cursor: pointer;
-  position: relative;
-}
-
-.prompt:hover {
-  background: ButtonFace;
-  transform: translateX(2px);
-}
-
-.prompt:last-child {
-  border-bottom: none;
-}
-
-.prompt-title {
-  font-weight: 600;
-  color: CanvasText;
-  margin-bottom: 4px;
-  font-size: 13px;
-  text-transform: capitalize;
-}
-
-.prompt-text {
+/* Extension-specific empty state */
+.jph-empty-state {
+  padding: 32px 16px;
+  text-align: center;
   color: GrayText;
-  font-size: 12px;
+}
+
+.jph-empty-state-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.jph-empty-state-text {
+  font-size: 13px;
   line-height: 1.4;
-  margin-bottom: 6px;
-  word-break: break-word;
-  background: Field;
-  padding: 6px 8px;
-  border-radius: 4px;
-  border-left: 2px solid Highlight;
-  position: relative;
-  padding-right: 32px;
-  transition: all 0.2s;
 }
 
-.prompt:hover .prompt-text {
-  border-left-color: Highlight;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+.jph-empty-state-subtext {
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: 4px;
 }
 
-/* Animations */
-@keyframes fadeIn {
+/* Extension-specific animations */
+@keyframes jph-fadeIn {
   from {
     opacity: 0;
     transform: translateY(8px);
@@ -365,47 +266,42 @@ body {
   }
 }
 
-.prompt {
-  animation: fadeIn 0.2s ease-out;
+.jph-prompt {
+  animation: jph-fadeIn 0.2s ease-out;
 }
 
-/* Responsive Design */
+/* Extension-specific responsive design */
 @media (max-width: 480px) {
-  .container {
+  .jph-container {
     max-width: 100%;
     border-radius: 0;
   }
   
-  .header {
+  .jph-header {
     padding: 10px 12px;
   }
   
-  .search-container {
+  .jph-search-container {
     padding: 10px 12px;
   }
   
-  .prompt {
+  .jph-prompt {
     padding: 6px 12px;
   }
 }
 
-/* Dark mode support */
+/* Extension-specific dark mode support */
 @media (prefers-color-scheme: dark) {
-  body {
-    background: Canvas;
-    color: CanvasText;
-  }
-  
-  .container {
+  .jph-container {
     background: Canvas;
     border-color: ButtonBorder;
   }
   
-  .prompt:hover {
+  .jph-prompt:hover {
     background: ButtonFace;
   }
   
-  .prompt-text {
+  .jph-prompt-text {
     background: Field;
     color: FieldText;
   }

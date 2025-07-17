@@ -23,10 +23,10 @@ function renderResults(filter = "") {
   
   if (prompts.length === 0) {
     resultsDiv.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-state-icon">📝</div>
-        <div class="empty-state-text">No prompts yet</div>
-        <div class="empty-state-subtext">Click the ⚙️ icon to add your first prompt</div>
+      <div class="jph-empty-state">
+        <div class="jph-empty-state-icon">📝</div>
+        <div class="jph-empty-state-text">No prompts yet</div>
+        <div class="jph-empty-state-subtext">Click the ⚙️ icon to add your first prompt</div>
       </div>
     `;
     return;
@@ -34,10 +34,10 @@ function renderResults(filter = "") {
   
   if (filtered.length === 0) {
     resultsDiv.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-state-icon">🔍</div>
-        <div class="empty-state-text">No prompts found</div>
-        <div class="empty-state-subtext">Try adjusting your search terms</div>
+      <div class="jph-empty-state">
+        <div class="jph-empty-state-icon">🔍</div>
+        <div class="jph-empty-state-text">No prompts found</div>
+        <div class="jph-empty-state-subtext">Try adjusting your search terms</div>
       </div>
     `;
     return;
@@ -45,13 +45,13 @@ function renderResults(filter = "") {
   
   filtered.forEach((p, index) => {
     const div = document.createElement('div');
-    div.className = 'prompt';
+    div.className = 'jph-prompt';
     div.style.animationDelay = `${index * 0.05}s`;
     div.innerHTML = `
-      <div class="prompt-title">${p.label}</div>
-      <div class="prompt-text">
+      <div class="jph-prompt-title">${p.label}</div>
+      <div class="jph-prompt-text">
         ${p.text}
-        <button class="copy-button" title="Copy to clipboard">📋</button>
+        <button class="jph-copy-button" title="Copy to clipboard">📋</button>
       </div>
     `;
     div.querySelector('button').addEventListener('click', () => {

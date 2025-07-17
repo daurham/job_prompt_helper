@@ -12,7 +12,7 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     }
     
-    .settings-container {
+    .jph-settings-container {
       max-width: 900px;
       margin: 0 auto;
       background: Canvas;
@@ -20,7 +20,7 @@
     }
     
     /* Sticky Header */
-    .sticky-header {
+    .jph-sticky-header {
       position: sticky;
       top: 0;
       background: Canvas;
@@ -29,27 +29,27 @@
       padding: 16px 20px;
     }
     
-    .settings-header {
+    .jph-settings-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 16px;
     }
     
-    .settings-header h1 {
+    .jph-settings-header h1 {
       font-size: 24px;
       font-weight: 600;
       margin: 0;
       color: CanvasText;
     }
     
-    .header-controls {
+    .jph-header-controls {
       display: flex;
       gap: 12px;
       align-items: center;
     }
     
-    .save-button {
+    .jph-save-button {
       background: Highlight;
       color: HighlightText;
       border: none;
@@ -62,27 +62,27 @@
       white-space: nowrap;
     }
     
-    .save-button:hover {
+    .jph-save-button:hover {
       opacity: 0.9;
       transform: translateY(-1px);
     }
     
-    .save-button.unsaved {
+    .jph-save-button.unsaved {
       background: #ff6b35;
-      animation: pulse 2s infinite;
+      animation: jph-pulse 2s infinite;
     }
     
-    @keyframes pulse {
+    @keyframes jph-pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.8; }
     }
     
     /* Search Filter */
-    .search-filter {
+    .jph-search-filter {
       margin-bottom: 16px;
     }
     
-    .search-filter input {
+    .jph-search-filter input {
       width: 100%;
       padding: 12px 16px;
       border: 1px solid ButtonBorder;
@@ -94,22 +94,22 @@
       box-sizing: border-box;
     }
     
-    .search-filter input:focus {
+    .jph-search-filter input:focus {
       outline: none;
       border-color: Highlight;
       box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
     }
     
-    .search-filter input::placeholder {
+    .jph-search-filter input::placeholder {
       color: GrayText;
     }
     
     /* Content Area */
-    .settings-content {
+    .jph-settings-content {
       padding: 20px;
     }
     
-    .add-prompt-btn {
+    .jph-add-prompt-btn {
       background: Highlight;
       color: HighlightText;
       border: none;
@@ -127,13 +127,13 @@
       gap: 8px;
     }
     
-    .add-prompt-btn:hover {
+    .jph-add-prompt-btn:hover {
       opacity: 0.9;
       transform: translateY(-1px);
     }
     
     /* Prompt Editor */
-    .prompt-editor {
+    .jph-prompt-editor {
       margin-bottom: 20px;
       padding: 20px;
       border: 1px solid ButtonBorder;
@@ -143,16 +143,16 @@
       position: relative;
     }
     
-    .prompt-editor:hover {
+    .jph-prompt-editor:hover {
       border-color: Highlight;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     
-    .prompt-editor.hidden {
+    .jph-prompt-editor.hidden {
       display: none;
     }
     
-    .prompt-editor input {
+    .jph-prompt-editor input {
       width: 100%;
       padding: 12px 16px;
       margin-bottom: 16px;
@@ -165,13 +165,13 @@
       box-sizing: border-box;
     }
     
-    .prompt-editor input:focus {
+    .jph-prompt-editor input:focus {
       outline: none;
       border-color: Highlight;
       box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
     }
     
-    .prompt-editor textarea {
+    .jph-prompt-editor textarea {
       width: 100%;
       padding: 12px 16px;
       margin-bottom: 16px;
@@ -187,20 +187,20 @@
       box-sizing: border-box;
     }
     
-    .prompt-editor textarea:focus {
+    .jph-prompt-editor textarea:focus {
       outline: none;
       border-color: Highlight;
       box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
     }
     
-    .prompt-actions {
+    .jph-prompt-actions {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
       align-items: center;
     }
     
-    .btn {
+    .jph-btn {
       padding: 8px 16px;
       border: none;
       border-radius: 6px;
@@ -214,52 +214,52 @@
       gap: 4px;
     }
     
-    .btn-primary {
+    .jph-btn-primary {
       background: Highlight;
       color: HighlightText;
     }
     
-    .btn-primary:hover {
+    .jph-btn-primary:hover {
       opacity: 0.9;
       transform: translateY(-1px);
     }
     
-    .btn-secondary {
+    .jph-btn-secondary {
       background: ButtonFace;
       color: ButtonText;
       border: 1px solid ButtonBorder;
     }
     
-    .btn-secondary:hover {
+    .jph-btn-secondary:hover {
       background: ButtonHoverFace;
     }
     
-    .btn-danger {
+    .jph-btn-danger {
       background: #dc3545;
       color: white;
     }
     
-    .btn-danger:hover {
+    .jph-btn-danger:hover {
       background: #c82333;
     }
     
-    .btn:disabled {
+    .jph-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
       transform: none !important;
     }
     
     /* Status Messages */
-    .status-message {
+    .jph-status-message {
       padding: 12px 16px;
       border-radius: 8px;
       margin-bottom: 20px;
       font-size: 14px;
       display: none;
-      animation: slideIn 0.3s ease-out;
+      animation: jph-slideIn 0.3s ease-out;
     }
     
-    @keyframes slideIn {
+    @keyframes jph-slideIn {
       from {
         opacity: 0;
         transform: translateY(-10px);
@@ -270,47 +270,47 @@
       }
     }
     
-    .status-success {
+    .jph-status-success {
       background: #d4edda;
       color: #155724;
       border: 1px solid #c3e6cb;
     }
     
-    .status-error {
+    .jph-status-error {
       background: #f8d7da;
       color: #721c24;
       border: 1px solid #f5c6cb;
     }
     
-    .prompts-container {
+    .jph-prompts-container {
       margin-top: 20px;
     }
     
-    .empty-state {
+    .jph-empty-state {
       text-align: center;
       padding: 60px 20px;
       color: GrayText;
     }
     
-    .empty-state-icon {
+    .jph-empty-state-icon {
       font-size: 64px;
       margin-bottom: 20px;
       opacity: 0.5;
     }
     
-    .empty-state-text {
+    .jph-empty-state-text {
       font-size: 18px;
       line-height: 1.5;
       margin-bottom: 8px;
     }
     
-    .empty-state-subtext {
+    .jph-empty-state-subtext {
       font-size: 14px;
       opacity: 0.7;
     }
     
     /* Individual Save Status */
-    .save-status {
+    .jph-save-status {
       font-size: 12px;
       padding: 4px 8px;
       border-radius: 4px;
@@ -319,13 +319,13 @@
       transition: opacity 0.2s;
     }
     
-    .save-status.saved {
+    .jph-save-status.saved {
       background: #d4edda;
       color: #155724;
       opacity: 1;
     }
     
-    .save-status.unsaved {
+    .jph-save-status.unsaved {
       background: #fff3cd;
       color: #856404;
       opacity: 1;
@@ -333,48 +333,48 @@
     
     /* Responsive Design */
     @media (max-width: 768px) {
-      .settings-container {
+      .jph-settings-container {
         margin: 0;
       }
       
-      .sticky-header {
+      .jph-sticky-header {
         padding: 12px 16px;
       }
       
-      .settings-header {
+      .jph-settings-header {
         flex-direction: column;
         gap: 12px;
         align-items: stretch;
       }
       
-      .settings-header h1 {
+      .jph-settings-header h1 {
         font-size: 20px;
         text-align: center;
       }
       
-      .header-controls {
+      .jph-header-controls {
         justify-content: center;
       }
       
-      .save-button {
+      .jph-save-button {
         width: 100%;
         padding: 12px 20px;
       }
       
-      .settings-content {
+      .jph-settings-content {
         padding: 16px;
       }
       
-      .prompt-editor {
+      .jph-prompt-editor {
         padding: 16px;
       }
       
-      .prompt-actions {
+      .jph-prompt-actions {
         flex-direction: column;
         align-items: stretch;
       }
       
-      .btn {
+      .jph-btn {
         width: 100%;
         justify-content: center;
         padding: 10px 16px;
@@ -382,44 +382,44 @@
     }
     
     @media (max-width: 480px) {
-      .sticky-header {
+      .jph-sticky-header {
         padding: 10px 12px;
       }
       
-      .settings-content {
+      .jph-settings-content {
         padding: 12px;
       }
       
-      .prompt-editor {
+      .jph-prompt-editor {
         padding: 12px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="settings-container">
-    <div class="sticky-header">
-      <div class="settings-header">
+  <div class="jph-settings-container">
+    <div class="jph-sticky-header">
+      <div class="jph-settings-header">
         <h1>Job Prompt Settings</h1>
-        <div class="header-controls">
-          <button class="save-button" id="save-all">Save All Changes</button>
+        <div class="jph-header-controls">
+          <button class="jph-save-button" id="save-all">Save All Changes</button>
         </div>
       </div>
       
-      <div class="search-filter">
+      <div class="jph-search-filter">
         <input type="text" id="search-filter" placeholder="Search prompts..." />
       </div>
     </div>
     
-    <div class="settings-content">
+    <div class="jph-settings-content">
       <div id="status-message"></div>
       
-      <button class="add-prompt-btn" id="add-prompt">
+      <button class="jph-add-prompt-btn" id="add-prompt">
         <span>+</span>
         <span>Add New Prompt</span>
       </button>
       
-      <div class="prompts-container" id="prompts-container">
+      <div class="jph-prompts-container" id="prompts-container">
         <!-- Prompts will be loaded here -->
       </div>
     </div>

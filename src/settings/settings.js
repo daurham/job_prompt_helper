@@ -34,10 +34,10 @@ function renderPrompts() {
   
   if (prompts.length === 0) {
     container.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-state-icon">📝</div>
-        <div class="empty-state-text">No prompts yet</div>
-        <div class="empty-state-subtext">Click "Add New Prompt" to get started!</div>
+      <div class="jph-empty-state">
+        <div class="jph-empty-state-icon">📝</div>
+        <div class="jph-empty-state-text">No prompts yet</div>
+        <div class="jph-empty-state-subtext">Click "Add New Prompt" to get started!</div>
       </div>
     `;
     return;
@@ -45,10 +45,10 @@ function renderPrompts() {
   
   if (filteredPrompts.length === 0 && searchFilter) {
     container.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-state-icon">🔍</div>
-        <div class="empty-state-text">No prompts found</div>
-        <div class="empty-state-subtext">Try adjusting your search terms</div>
+      <div class="jph-empty-state">
+        <div class="jph-empty-state-icon">🔍</div>
+        <div class="jph-empty-state-text">No prompts found</div>
+        <div class="jph-empty-state-subtext">Try adjusting your search terms</div>
       </div>
     `;
     return;
@@ -57,7 +57,7 @@ function renderPrompts() {
   filteredPrompts.forEach((prompt, displayIndex) => {
     const actualIndex = prompts.indexOf(prompt);
     const promptDiv = document.createElement('div');
-    promptDiv.className = 'prompt-editor';
+    promptDiv.className = 'jph-prompt-editor';
     promptDiv.innerHTML = `
       <input type="text" 
              placeholder="Prompt Label (e.g., LinkedIn, Email)" 
@@ -69,12 +69,12 @@ function renderPrompts() {
                 data-index="${actualIndex}" 
                 data-field="text"
                 class="prompt-text">${prompt.text}</textarea>
-      <div class="prompt-actions">
-        <button class="btn btn-primary save-individual" data-index="${actualIndex}">💾 Save</button>
-        <button class="btn btn-secondary move-up" data-index="${actualIndex}" ${actualIndex === 0 ? 'disabled' : ''}>↑ Up</button>
-        <button class="btn btn-secondary move-down" data-index="${actualIndex}" ${actualIndex === prompts.length - 1 ? 'disabled' : ''}>↓ Down</button>
-        <button class="btn btn-danger delete-prompt" data-index="${actualIndex}">🗑️ Delete</button>
-        <div class="save-status" data-index="${actualIndex}"></div>
+      <div class="jph-prompt-actions">
+        <button class="jph-btn jph-btn-primary save-individual" data-index="${actualIndex}">💾 Save</button>
+        <button class="jph-btn jph-btn-secondary move-up" data-index="${actualIndex}" ${actualIndex === 0 ? 'disabled' : ''}>↑ Up</button>
+        <button class="jph-btn jph-btn-secondary move-down" data-index="${actualIndex}" ${actualIndex === prompts.length - 1 ? 'disabled' : ''}>↓ Down</button>
+        <button class="jph-btn jph-btn-danger delete-prompt" data-index="${actualIndex}">🗑️ Delete</button>
+        <div class="jph-save-status" data-index="${actualIndex}"></div>
       </div>
     `;
     container.appendChild(promptDiv);
@@ -140,10 +140,10 @@ function addButtonListeners() {
 
 // Show individual save status
 function showIndividualSaveStatus(index, status) {
-  const statusElement = document.querySelector(`[data-index="${index}"].save-status`);
+  const statusElement = document.querySelector(`[data-index="${index}"].jph-save-status`);
   if (statusElement) {
     statusElement.textContent = status === 'saved' ? 'Saved' : 'Unsaved';
-    statusElement.className = `save-status ${status}`;
+    statusElement.className = `jph-save-status ${status}`;
   }
 }
 
@@ -160,7 +160,7 @@ async function saveIndividualPrompt(index) {
     
     // Clear individual save status after 2 seconds
     setTimeout(() => {
-      const statusElement = document.querySelector(`[data-index="${index}"].save-status`);
+      const statusElement = document.querySelector(`[data-index="${index}"].jph-save-status`);
       if (statusElement) {
         statusElement.style.opacity = '0';
       }
@@ -231,7 +231,7 @@ async function saveAllPrompts() {
     showStatus('All prompts saved successfully!', 'success');
     
     // Clear all individual save statuses
-    document.querySelectorAll('.save-status').forEach(status => {
+    document.querySelectorAll('.jph-save-status').forEach(status => {
       status.style.opacity = '0';
     });
     
@@ -250,7 +250,7 @@ async function saveAllPrompts() {
 function showStatus(message, type) {
   const statusDiv = document.getElementById('status-message');
   statusDiv.textContent = message;
-  statusDiv.className = `status-message status-${type}`;
+  statusDiv.className = `jph-status-message jph-status-${type}`;
   statusDiv.style.display = 'block';
   
   setTimeout(() => {

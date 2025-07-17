@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Job Prompt Helper",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Quickly access and copy your job application responses and personal information with a persistent floating panel.",
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
