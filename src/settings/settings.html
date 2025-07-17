@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="../../style.css" />
+  <style>
+    body {
+      min-width: auto;
+      background: Canvas;
+      color: CanvasText;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    
+    .settings-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: Canvas;
+      min-height: 100vh;
+    }
+    
+    /* Sticky Header */
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      background: Canvas;
+      border-bottom: 1px solid ButtonBorder;
+      z-index: 100;
+      padding: 16px 20px;
+    }
+    
+    .settings-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    
+    .settings-header h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0;
+      color: CanvasText;
+    }
+    
+    .header-controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    
+    .save-button {
+      background: Highlight;
+      color: HighlightText;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    
+    .save-button:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    
+    .save-button.unsaved {
+      background: #ff6b35;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    
+    /* Search Filter */
+    .search-filter {
+      margin-bottom: 16px;
+    }
+    
+    .search-filter input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid ButtonBorder;
+      border-radius: 8px;
+      background: Field;
+      color: FieldText;
+      font-size: 14px;
+      transition: all 0.2s;
+      box-sizing: border-box;
+    }
+    
+    .search-filter input:focus {
+      outline: none;
+      border-color: Highlight;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+    
+    .search-filter input::placeholder {
+      color: GrayText;
+    }
+    
+    /* Content Area */
+    .settings-content {
+      padding: 20px;
+    }
+    
+    .add-prompt-btn {
+      background: Highlight;
+      color: HighlightText;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      width: 100%;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .add-prompt-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    
+    /* Prompt Editor */
+    .prompt-editor {
+      margin-bottom: 20px;
+      padding: 20px;
+      border: 1px solid ButtonBorder;
+      border-radius: 12px;
+      background: Field;
+      transition: all 0.2s;
+      position: relative;
+    }
+    
+    .prompt-editor:hover {
+      border-color: Highlight;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .prompt-editor.hidden {
+      display: none;
+    }
+    
+    .prompt-editor input {
+      width: 100%;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      border: 1px solid ButtonBorder;
+      border-radius: 8px;
+      background: Canvas;
+      color: CanvasText;
+      font-size: 14px;
+      transition: all 0.2s;
+      box-sizing: border-box;
+    }
+    
+    .prompt-editor input:focus {
+      outline: none;
+      border-color: Highlight;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+    
+    .prompt-editor textarea {
+      width: 100%;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      border: 1px solid ButtonBorder;
+      border-radius: 8px;
+      background: Canvas;
+      color: CanvasText;
+      resize: vertical;
+      min-height: 100px;
+      font-size: 14px;
+      font-family: inherit;
+      transition: all 0.2s;
+      box-sizing: border-box;
+    }
+    
+    .prompt-editor textarea:focus {
+      outline: none;
+      border-color: Highlight;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+    
+    .prompt-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .btn-primary {
+      background: Highlight;
+      color: HighlightText;
+    }
+    
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    
+    .btn-secondary {
+      background: ButtonFace;
+      color: ButtonText;
+      border: 1px solid ButtonBorder;
+    }
+    
+    .btn-secondary:hover {
+      background: ButtonHoverFace;
+    }
+    
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
+    
+    .btn-danger:hover {
+      background: #c82333;
+    }
+    
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+    
+    /* Status Messages */
+    .status-message {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      display: none;
+      animation: slideIn 0.3s ease-out;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .status-success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .status-error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
+    .prompts-container {
+      margin-top: 20px;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: GrayText;
+    }
+    
+    .empty-state-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+    
+    .empty-state-text {
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    
+    .empty-state-subtext {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+    
+    /* Individual Save Status */
+    .save-status {
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-left: auto;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    
+    .save-status.saved {
+      background: #d4edda;
+      color: #155724;
+      opacity: 1;
+    }
+    
+    .save-status.unsaved {
+      background: #fff3cd;
+      color: #856404;
+      opacity: 1;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .settings-container {
+        margin: 0;
+      }
+      
+      .sticky-header {
+        padding: 12px 16px;
+      }
+      
+      .settings-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+      }
+      
+      .settings-header h1 {
+        font-size: 20px;
+        text-align: center;
+      }
+      
+      .header-controls {
+        justify-content: center;
+      }
+      
+      .save-button {
+        width: 100%;
+        padding: 12px 20px;
+      }
+      
+      .settings-content {
+        padding: 16px;
+      }
+      
+      .prompt-editor {
+        padding: 16px;
+      }
+      
+      .prompt-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 16px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .sticky-header {
+        padding: 10px 12px;
+      }
+      
+      .settings-content {
+        padding: 12px;
+      }
+      
+      .prompt-editor {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="settings-container">
+    <div class="sticky-header">
+      <div class="settings-header">
+        <h1>Job Prompt Settings</h1>
+        <div class="header-controls">
+          <button class="save-button" id="save-all">Save All Changes</button>
+        </div>
+      </div>
+      
+      <div class="search-filter">
+        <input type="text" id="search-filter" placeholder="Search prompts..." />
+      </div>
+    </div>
+    
+    <div class="settings-content">
+      <div id="status-message"></div>
+      
+      <button class="add-prompt-btn" id="add-prompt">
+        <span>+</span>
+        <span>Add New Prompt</span>
+      </button>
+      
+      <div class="prompts-container" id="prompts-container">
+        <!-- Prompts will be loaded here -->
+      </div>
+    </div>
+  </div>
+  <script type="module" src="settings.js"></script>
+</body>
+</html> 
