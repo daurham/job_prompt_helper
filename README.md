@@ -1,11 +1,11 @@
 # Job Prompt Helper 🚀
 
-A Chrome extension that helps you quickly access and copy common job application responses and personal information with a persistent floating panel.
+A Chrome extension that helps job seekers quickly access and copy their personalized job application responses and personal information with a persistent floating panel.
 
 ## ✨ Features
 
 - **Persistent Floating Panel**: Stays open while you work - won't close when clicking outside
-- **Quick Access**: Instantly find and copy job application answers
+- **Quick Access**: Instantly find and copy your job application answers
 - **Search Functionality**: Filter through prompts by typing keywords
 - **One-Click Copy**: Copy responses directly to your clipboard
 - **Auto-Focus**: Search input automatically focused when panel opens
@@ -14,64 +14,47 @@ A Chrome extension that helps you quickly access and copy common job application
 - **Personal Information**: Store and access your contact details, social links, and addresses
 - **Interview Responses**: Pre-written answers for common interview questions
 - **Easy Data Management**: Built-in settings page to edit your prompts
+- **Privacy First**: All data stored locally on your device
 
-## 🎯 Quick Start
+## 🎯 Perfect For
 
-1. **Install the extension** (see Installation section below)
-2. **Customize your data** (see Data Management section below)
-3. **Go to any webpage** (like a job application site)
-4. **Press `Ctrl+Shift+J`** (or `Cmd+Shift+J` on Mac)
-5. **Start typing** to search for prompts
-6. **Press Enter** when only one result shows to auto-copy
-7. **Or click any "Copy" button** for manual copying
+- **Job Seekers** - Quick access to your personal information and interview responses
+- **Recruiters** - Efficiently copy candidate information during calls
+- **Students** - Store and access your resume details and cover letter templates
+- **Professionals** - Keep your contact information and professional responses handy
 
-## 📋 Included Prompts
+## 📋 What You Can Store
 
 ### Personal Information
 - LinkedIn profile URL
 - GitHub profile URL
-- Personal website
+- Portfolio website
 - Email address
 - Phone number
-- Address (short and full formats)
-- City, State, and Zip
-- Country, Date of Birth, Gender, Nationality
+- Full address and location details
 
 ### Interview Responses
-- Project you're proud of
-- Biggest challenge overcome
-- Why you want to work at the company
-- Biggest weakness
-- Biggest strength
+- "Tell me about yourself"
+- "Why do you want this job?"
+- "What are your strengths?"
+- "What's your biggest weakness?"
+- "Describe a challenging project"
+- "Where do you see yourself in 5 years?"
+- "Why should we hire you?"
+- "What's your salary expectation?"
+- "Do you have any questions?"
+- "Availability"
 
-## 🚀 Installation
+## 🚀 Quick Start
 
-### Method 1: Load Unpacked Extension
-
-1. **Open Chrome Extensions**
-   - Navigate to `chrome://extensions/`
-   - Or go to Chrome Menu → More Tools → Extensions
-
-2. **Enable Developer Mode**
-   - Toggle the "Developer mode" switch in the top-right corner
-   ![Developer Mode Toggle](assets/toggled_dev_mode.png)
-
-3. **Load the Extension**
-   - Click "Load unpacked" button
-   - Select the `job_prompt_helper` folder
-   ![Load Unpacked](assets/load_unpacked.png)
-
-4. **Customize Your Data** (see Data Management section below)
-
-5. **Start Using**
-   - The extension icon will appear in your Chrome toolbar
-   - Click the icon to open the popup version
-   - Or use `Ctrl+Shift+J` for the floating panel
-   ![Extension Demo](assets/extension_demo.png)
-
-### Method 2: Chrome Web Store (Coming Soon)
-
-The extension will be available on the Chrome Web Store for easy installation.
+1. **Install the extension** from the Chrome Web Store
+2. **Click the extension icon** to open the popup
+3. **Click the settings gear icon** to customize your prompts
+4. **Add your personal information** and interview responses
+5. **Go to any webpage** (like a job application site)
+6. **Press `Ctrl+Shift+J`** to open the floating panel
+7. **Start typing** to search for your prompts
+8. **Click "Copy"** or press Enter to copy responses
 
 ## 🎯 How to Use
 
@@ -88,11 +71,18 @@ The extension will be available on the Chrome Web Store for easy installation.
 2. **Search for Prompts** by typing in the search box
 3. **Copy Responses** by clicking the "Copy" button
 4. **Click the ⚙️ icon** to access settings
+5. **Click the 🎯 icon** to support the developer
 
-### DevTools Panel
-1. **Open DevTools** (F12)
-2. **Look for "Job Prompts" tab**
-3. **Use the same search and copy functionality**
+### Settings Page
+1. **Click the ⚙️ settings icon** in the popup
+2. **Edit your prompts** in the settings page:
+   - Change labels and text for each prompt
+   - Add new prompts with the "+ Add New Prompt" button
+   - Reorder prompts using the up/down arrows
+   - Delete prompts you don't need
+   - Save individual prompts or all at once
+3. **Use the search filter** to find specific prompts quickly
+4. **Your data is stored securely** in Chrome's local storage
 
 ## ⌨️ Keyboard Shortcuts
 
@@ -101,60 +91,26 @@ The extension will be available on the Chrome Web Store for easy installation.
   - Auto-focuses the search input
   - Works on any webpage
 
-## 📊 Data Management
-
-### Setting Up Your Personal Data
-
-#### Option 1: Built-in Settings Page (Recommended)
-1. **Click the extension icon** in your Chrome toolbar
-2. **Click the ⚙️ settings icon** in the popup header
-3. **Edit your prompts** in the settings page:
-   - Change labels and text for each prompt
-   - Add new prompts with the "+ Add New Prompt" button
-   - Reorder prompts using the up/down arrows
-   - Delete prompts you don't need
-4. **Click "Save All Changes"** to save your data
-5. **Your data is stored securely** in Chrome's local storage
-
-#### Option 2: Manual File Editing
-1. **Copy the example file**:
-   ```bash
-   cp data/prompts.example.js data/prompts.js
-   ```
-
-2. **Edit `data/prompts.js`** with your personal information:
-   ```javascript
-   export const prompts = [
-     // Personal Information
-     { label: "LinkedIn", text: "https://www.linkedin.com/in/yourprofile" },
-     { label: "GitHub", text: "https://github.com/yourprofile" },
-     { label: "Email", text: "yourname@yourwebsite.com" },
-     // ... customize all your personal data
-   ];
-   ```
-
-3. **Reload the extension** in Chrome
-
-### Data Security
+## 🔒 Privacy & Security
 
 - **Your personal data is stored locally** in Chrome's extension storage
 - **No data is sent to external servers** - everything stays on your device
 - **Settings page data is private** and only accessible to you
-- **Manual file editing** keeps data in your control
+- **No tracking or analytics** - complete privacy
 
-### Adding Custom Prompts
+## 🛠️ Customization
 
-#### Via Settings Page:
-1. Click the "⚙️" settings icon in the popup
+### Adding Your Own Prompts
+1. Open the settings page (⚙️ icon)
 2. Click "+ Add New Prompt"
 3. Enter your label and text
-4. Click "Save All Changes"
+4. Click "Save" to store it
 
-#### Via File Editing:
-Edit `data/prompts.js` to add your own prompts:
-```javascript
-{ label: "Your Custom Prompt", text: "Your custom response text" }
-```
+### Organizing Your Prompts
+- Use descriptive labels like "LinkedIn", "Email", "Why This Company"
+- Group related prompts together
+- Use the search filter to find prompts quickly
+- Reorder prompts to match your workflow
 
 ## 📁 File Structure
 
@@ -201,17 +157,13 @@ job_prompt_helper/
 - **Data Management**: Local storage with settings interface
 - **Security**: All data stored locally, no external servers
 
-## 🤝 Contributing
+## 🤝 Support
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test the extension
-5. Submit a pull request
+If you find this extension helpful, please consider supporting me:
 
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
+- **Click the 🎯 icon** in the popup to visit our [Buy Me a Coffee page](https://coff.ee/daurham)
+- **Leave a review** on the Chrome Web Store
+- **Star the repository** on [GitHub](https://github.com/daurham/job_prompt_helper)
 
 ## 🐛 Issues & Support
 
@@ -220,7 +172,13 @@ If you encounter any issues or have suggestions for improvements:
 - Include browser version and steps to reproduce
 - Provide screenshots if applicable
 
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
 ---
 
 **Made with ❤️ for job seekers everywhere**
+
+*Helping you land your dream job, one prompt at a time.*
 

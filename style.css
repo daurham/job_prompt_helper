@@ -46,6 +46,12 @@ body {
   min-width: 0;
 }
 
+.header-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .close-btn {
   background: none;
   border: none;
@@ -92,6 +98,34 @@ body {
 }
 
 .settings-btn:active {
+  transform: scale(0.95);
+}
+
+.support-btn {
+  background: none;
+  border: none;
+  color: HighlightText;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.support-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.support-btn:active {
   transform: scale(0.95);
 }
 
@@ -233,6 +267,90 @@ body {
 .empty-state-text {
   font-size: 13px;
   line-height: 1.4;
+}
+
+.empty-state-subtext {
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+/* Enhanced Copy Button */
+.copy-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: Highlight;
+  color: HighlightText;
+  border: none;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.copy-button:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.copy-button:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Enhanced Prompt Items */
+.prompt {
+  padding: 8px 16px;
+  border-bottom: 1px solid ButtonBorder;
+  transition: all 0.2s;
+  cursor: pointer;
+  position: relative;
+}
+
+.prompt:hover {
+  background: ButtonFace;
+  transform: translateX(2px);
+}
+
+.prompt:last-child {
+  border-bottom: none;
+}
+
+.prompt-title {
+  font-weight: 600;
+  color: CanvasText;
+  margin-bottom: 4px;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+.prompt-text {
+  color: GrayText;
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 6px;
+  word-break: break-word;
+  background: Field;
+  padding: 6px 8px;
+  border-radius: 4px;
+  border-left: 2px solid Highlight;
+  position: relative;
+  padding-right: 32px;
+  transition: all 0.2s;
+}
+
+.prompt:hover .prompt-text {
+  border-left-color: Highlight;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Animations */

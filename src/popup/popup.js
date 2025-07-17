@@ -21,11 +21,23 @@ function renderResults(filter = "") {
     p.text.toLowerCase().includes(filter.toLowerCase())
   );
   
+  if (prompts.length === 0) {
+    resultsDiv.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state-icon">📝</div>
+        <div class="empty-state-text">No prompts yet</div>
+        <div class="empty-state-subtext">Click the ⚙️ icon to add your first prompt</div>
+      </div>
+    `;
+    return;
+  }
+  
   if (filtered.length === 0) {
     resultsDiv.innerHTML = `
       <div class="empty-state">
         <div class="empty-state-icon">🔍</div>
         <div class="empty-state-text">No prompts found</div>
+        <div class="empty-state-subtext">Try adjusting your search terms</div>
       </div>
     `;
     return;
@@ -63,6 +75,14 @@ document.getElementById('settings-btn').addEventListener('click', () => {
   // Open settings page in extension context
   chrome.tabs.create({ 
     url: chrome.runtime.getURL('src/settings/settings.html'),
+    active: true
+  });
+});
+
+// Support button handler
+document.getElementById('support-btn').addEventListener('click', () => {
+  chrome.tabs.create({ 
+    url: 'https://coff.ee/daurham',
     active: true
   });
 });
