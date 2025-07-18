@@ -52,6 +52,12 @@ function createPanel() {
   document.getElementById('close-panel').addEventListener('click', togglePanel);
   document.getElementById('search').addEventListener('input', (e) => renderResults(e.target.value));
   document.getElementById('search').addEventListener('keydown', handleSearchKeydown);
+  document.getElementById('search').addEventListener('focus', updateSelectedState);
+  document.getElementById('search').addEventListener('blur', () => {
+    document.querySelectorAll('.jph-prompt').forEach(prompt => {
+      prompt.classList.remove('jph-selected');
+    });
+  });
   
   // Load prompts and render
   loadPrompts();
@@ -132,30 +138,51 @@ function renderResults(filter = "") {
     
     resultsDiv.appendChild(div);
   });
+  
+  // Update selected state
+  updateSelectedState();
+}
+
+function updateSelectedState() {
+  // Remove all selected states
+  document.querySelectorAll('.jph-prompt').forEach(prompt => {
+    prompt.classList.remove('jph-selected');
+  });
+  
+  // Add selected state to first visible prompt if search is focused
+  const firstPrompt = document.querySelector('.jph-prompt');
+  const searchInput = document.getElementById('search');
+  if (firstPrompt && searchInput && document.activeElement === searchInput) {
+    firstPrompt.classList.add('jph-selected');
+  }
+}
+
+function copySelectedPrompt() {
+  const selectedPrompt = document.querySelector('.jph-prompt.jph-selected');
+  if (selectedPrompt) {
+    const text = selectedPrompt.querySelector('.jph-prompt-text').textContent.replace('📋', '').replace('✓', '').trim();
+    navigator.clipboard.writeText(text);
+    
+    // Show copy feedback
+    const button = selectedPrompt.querySelector('.jph-copy-button');
+    button.textContent = '✓';
+    button.title = 'Copied!';
+    setTimeout(() => {
+      button.textContent = '📋';
+      button.title = 'Copy to clipboard';
+    }, 1000);
+    
+    // Close panel after copying
+    setTimeout(() => {
+      togglePanel();
+    }, 500);
+  }
 }
 
 function handleSearchKeydown(e) {
   if (e.key === 'Enter') {
-    const resultsDiv = document.getElementById('results');
-    const visibleResults = resultsDiv.querySelectorAll('.jph-copy-button');
-    
-    if (visibleResults.length === 1) {
-      // Auto-copy the single result
-      const button = visibleResults[0];
-      const text = button.parentElement.textContent.replace('📋', '').replace('✓', '').trim();
-      navigator.clipboard.writeText(text);
-      button.textContent = '✓';
-      button.title = 'Copied!';
-      setTimeout(() => {
-        button.textContent = '📋';
-        button.title = 'Copy to clipboard';
-      }, 1000);
-      
-      // Close the panel after copying
-      setTimeout(() => {
-        togglePanel();
-      }, 500);
-    }
+    e.preventDefault();
+    copySelectedPrompt();
   }
 }
 
@@ -167,8 +194,8 @@ function togglePanel() {
   isVisible = !isVisible;
   panel.style.display = isVisible ? 'block' : 'none';
   
-  // Auto-focus the search input when panel becomes visible
   if (isVisible) {
+    // Auto-focus the search input when panel becomes visible
     setTimeout(() => {
       const searchInput = document.getElementById('search');
       if (searchInput) {
@@ -176,6 +203,13 @@ function togglePanel() {
         searchInput.select();
       }
     }, 100);
+  } else {
+    // Clear the search input when panel is closed
+    const searchInput = document.getElementById('search');
+    if (searchInput) {
+      searchInput.value = '';
+      renderResults(''); // Re-render with empty filter to show all prompts
+    }
   }
 }
 

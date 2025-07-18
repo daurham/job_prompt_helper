@@ -66,9 +66,65 @@ function renderResults(filter = "") {
     });
     resultsDiv.appendChild(div);
   });
+  
+  // Update selected state
+  updateSelectedState();
 }
 
-searchInput.addEventListener('input', e => renderResults(e.target.value));
+function updateSelectedState() {
+  // Remove all selected states
+  document.querySelectorAll('.jph-prompt').forEach(prompt => {
+    prompt.classList.remove('jph-selected');
+  });
+  
+  // Add selected state to first visible prompt if search is focused
+  const firstPrompt = document.querySelector('.jph-prompt');
+  if (firstPrompt && document.activeElement === searchInput) {
+    firstPrompt.classList.add('jph-selected');
+  }
+}
+
+function copySelectedPrompt() {
+  const selectedPrompt = document.querySelector('.jph-prompt.jph-selected');
+  if (selectedPrompt) {
+    const text = selectedPrompt.querySelector('.jph-prompt-text').textContent.replace('📋', '').replace('✓', '').trim();
+    navigator.clipboard.writeText(text);
+    
+    // Show copy feedback
+    const button = selectedPrompt.querySelector('.jph-copy-button');
+    button.textContent = '✓';
+    button.title = 'Copied!';
+    setTimeout(() => {
+      button.textContent = '📋';
+      button.title = 'Copy to clipboard';
+    }, 1000);
+    
+    // Close popup after copying
+    setTimeout(() => {
+      window.close();
+    }, 500);
+  }
+}
+
+searchInput.addEventListener('input', e => {
+  renderResults(e.target.value);
+});
+
+// Handle Enter key
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    copySelectedPrompt();
+  }
+});
+
+// Handle focus events to update selected state
+searchInput.addEventListener('focus', updateSelectedState);
+searchInput.addEventListener('blur', () => {
+  document.querySelectorAll('.jph-prompt').forEach(prompt => {
+    prompt.classList.remove('jph-selected');
+  });
+});
 
 // Settings button handler
 document.getElementById('settings-btn').addEventListener('click', () => {
