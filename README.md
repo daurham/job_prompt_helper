@@ -162,7 +162,7 @@ job_prompt_helper/
 If you find this extension helpful, please consider supporting me:
 
 - **Click the 🎯 icon** in the popup to visit our [Buy Me a Coffee page](https://coff.ee/daurham)
-- **Leave a review** on the Chrome Web Store
+- **Leave a review** on the [Chrome Web Store](https://chromewebstore.google.com/detail/job-prompt-helper/beihennhbehhjhgeoiolckbpioogjlje?hl=en-US&utm_source=ext_sidebar)
 - **Star the repository** on [GitHub](https://github.com/daurham/job_prompt_helper)
 
 ## 🐛 Issues & Support
